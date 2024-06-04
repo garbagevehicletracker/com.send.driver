@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity() {
         // Initialize location services
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // Check for location permissions
+            // Check for location permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
-            startLocationUpdates()
+
         } else {
             // Request location permissions
             ActivityCompat.requestPermissions(this,
@@ -60,6 +60,12 @@ class MainActivity : AppCompatActivity() {
                     webView.evaluateJavascript(javascript, null)
                 }
             }
+        }
+
+        // Load the WebView
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            startLocationUpdates()
         }
 
         // Load the WebView
